@@ -7,35 +7,37 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 
-
+namespace Views;
 
 public class Menu : Form
 {
-    private Label lblMenu;
+    private Label lblTitulo;
     private Button btnProduto;
     private Button btnSair;
 
-    
+  
+
     public Menu()
     {
+
         Size = new Size(400,300);
 
         this.Text = "Menu";
 
-        lblMenu = new Label();
-        lblMenu.Text = "Menu";
-        lblMenu.Location = new Point(160,20);
-        lblMenu.Size = new Size(80,20);
-        lblMenu.Font = new Font("Arial", 14, FontStyle.Bold);
+        lblTitulo = new Label();
+        lblTitulo.Text = "Menu";
+        lblTitulo.Location = new Point(160,20);
+        lblTitulo.Size = new Size(80,20);
+        lblTitulo.Font = new Font("Arial", 14, FontStyle.Bold);
         this.StartPosition = FormStartPosition.CenterScreen;
-        this.Controls.Add(lblMenu);
+        this.Controls.Add(lblTitulo);
 
         
         btnProduto = new Button();
         btnProduto.Text = "Produto";
         btnProduto.Location = new Point(130, 80);
         btnProduto.Size = new Size(120, 30);
-        //btnConfirm.Click += new EventHandler(); falta o evento de confirmar
+        btnProduto.Click += new EventHandler(btnProduto_Click);
         this.Controls.Add(btnProduto);
 
         btnSair = new Button();
@@ -44,16 +46,21 @@ public class Menu : Form
         btnSair.Size =new Size(120, 30);
         btnSair.Click += new EventHandler(btnSair_Click);
         this.Controls.Add(btnSair);
-
-
-        
-
         
     }
 
 
     private void btnSair_Click(object sender, EventArgs e)
+    {   
+        
+        Application.Exit();
+        this.Close();
+    }
+
+    private void btnProduto_Click(object sender, EventArgs e)
     {
+        ListaProduto lista = new ListaProduto();
+        lista.Show();
         this.Close();
     }
 }

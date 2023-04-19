@@ -8,21 +8,24 @@ using System.Diagnostics;
 using System.Threading;
 
 
+namespace Views;
+
 
 public class Produto : Form
 {
-    private Label lblProduto;
+    private Label lblTitulo;
     private Label lblNome;
     private Label lblPreco;
     private Label lblCancel;
     private Label lblConfirm;
 
-    private TextBox txtNome;
-    private TextBox txtPreco;
+    public TextBox txtNome;
+    public TextBox txtPreco;
 
     private Button btnCancel;
     private Button btnConfirm;
 
+    
     
     public Produto()
     {
@@ -30,13 +33,13 @@ public class Produto : Form
 
         this.Text = "Produto";
 
-        lblProduto = new Label();
-        lblProduto.Text = "Cadastro de Produto";
-        lblProduto.Location = new Point(170,50);
-        lblProduto.Size = new Size(350,20);
+        lblTitulo = new Label();
+        lblTitulo.Text = "Cadastro de Produto";
+        lblTitulo.Location = new Point(170,50);
+        lblTitulo.Size = new Size(350,20);
         this.StartPosition = FormStartPosition.CenterScreen;
-        lblProduto.Font = new Font("Arial", 14, FontStyle.Bold);
-        this.Controls.Add(lblProduto);
+        lblTitulo.Font = new Font("Arial", 14, FontStyle.Bold);
+        this.Controls.Add(lblTitulo);
 
         
 
@@ -92,6 +95,19 @@ public class Produto : Form
         
     }
 
+
+    public static void CadastrarProduto()
+    {
+
+    }
+
+    private void btnConfirm_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("Produto cadastrado com sucesso");
+        ListaProduto lista = new ListaProduto();
+        lista.Show();
+        this.Close();
+    }
 
     private void btnCancel_Click(object sender, EventArgs e)
     {

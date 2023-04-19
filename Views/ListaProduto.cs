@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 
-
+namespace Views;
 
 public class ListaProduto : Form 
 {
@@ -15,10 +15,10 @@ public class ListaProduto : Form
     private ListBox listBox;
 
     private ListViewItem listViewItem;
-    private Button btnAlter;
+    private Button btnAlterar;
     private Button btnDelete;
     private Button btnSair;
-    private Button btnAdd;
+    private Button btnInserir;
     
 
 
@@ -28,15 +28,7 @@ public class ListaProduto : Form
 
         Size = new Size(700,700);
         this.Text  = "Lista de Produtos";
-
-        // listBox = new ListBox();
-        // listBox.Location = new Point(10, 10);
-        // listBox.Size = new Size(650,600);
-        // listBox.Items.Add("Kill Bill");
-        // listBox.Items.Add("Rei Leão");
-        // listBox.Items.Add("Coringa");
-        // this.Controls.Add(listBox);
-
+        this.StartPosition = FormStartPosition.CenterScreen;
 
         listView = new ListView();
         listView.Location = new Point(10,20);
@@ -50,25 +42,25 @@ public class ListaProduto : Form
         this.Controls.Add(listView);
 
 
-        btnAdd = new Button();
-        btnAdd.Text = "Inserir";
-        btnAdd.Location = new Point(100, 600);
-        btnAdd.Size =new Size(80, 30);
-        //btnAdd.Click += new EventHandler(btnAdd_Click);
-        this.Controls.Add(btnAdd);
+        btnInserir = new Button();
+        btnInserir.Text = "Inserir";
+        btnInserir.Location = new Point(100, 600);
+        btnInserir.Size =new Size(80, 30);
+        btnInserir.Click += new EventHandler(btnInserir_Click);
+        this.Controls.Add(btnInserir);
 
-        btnAlter = new Button();
-        btnAlter.Text = "Alterar";
-        btnAlter.Location = new Point(200, 600);
-        btnAlter.Size =new Size(80, 30);
-        //btnAlter.Click += new EventHandler(btnAlter_Click);
-        this.Controls.Add(btnAlter);
+        btnAlterar = new Button();
+        btnAlterar.Text = "Alterar";
+        btnAlterar.Location = new Point(200, 600);
+        btnAlterar.Size =new Size(80, 30);
+        //btnAlterar.Click += new EventHandler(btnAlterar_Click); Fazer a regra do botão
+        this.Controls.Add(btnAlterar);
 
         btnDelete = new Button();
         btnDelete.Text = "Deletar";
         btnDelete.Location = new Point(300, 600);
         btnDelete.Size =new Size(80, 30);
-        //btnDelete.Click += new EventHandler(btnDelete_Click);
+        //btnDelete.Click += new EventHandler(btnDelete_Click); Fazer a regra do botão
         this.Controls.Add(btnDelete);
 
         btnSair = new Button();
@@ -83,11 +75,31 @@ public class ListaProduto : Form
     }
 
     private void btnSair_Click(object sender, EventArgs e)
-    {
+    { 
         this.Close();
+
     }
 
+    private void btnInserir_Click(object sender, EventArgs e)
+    {
+        Produto produto = new Produto();
+        produto.Show();
+    }
 
+    private void btnAlterar_Click(object sender, EventArgs e)
+    {
+        //Realizar a lógica 
+     
+    }
+
+    private void btnDelete_Click(object sender, EventArgs e)
+    {
+        //Realizar a lógica
+
+        Confirmacao confirmacao = new Confirmacao();
+        confirmacao.Show();
+        
+    }
 
     
 }
