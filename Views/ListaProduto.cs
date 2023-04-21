@@ -34,12 +34,14 @@ public class ListaProduto : Form
         listView.Location = new Point(10,20);
         listView.Size = new Size(660, 550);
         listView.View = View.Details;
+        listView.FullRowSelect = true;
 
         listView.Columns.Add("ID", -2, HorizontalAlignment.Left);
         listView.Columns.Add("Produto", -2, HorizontalAlignment.Left);
         listView.Columns.Add("Preço", -2, HorizontalAlignment.Left);
 
         this.Controls.Add(listView);
+        this.LoadList();
 
 
         btnInserir = new Button();
@@ -67,11 +69,27 @@ public class ListaProduto : Form
         btnSair.Text = "Sair";
         btnSair.Location = new Point(400, 600);
         btnSair.Size =new Size(80, 30);
-        btnSair.Click += new EventHandler(btnSair_Click);
+        btnSair.Click += (sender, e) => {
+        this.Close();
+        };
         this.Controls.Add(btnSair);
 
        
 
+    }
+
+    private void LoadList() {
+        /*
+            listView.Items.Clear();
+            foreach(Models.Produto p in Controller.Produto.GetLista()) {
+
+                listView.Items.Add(
+                    new ListViewItem(new [] { 
+                        p.Id.ToString(), p.Nome, p.Preco.ToString()
+                    })
+                )
+            }
+        */
     }
 
     private void btnSair_Click(object sender, EventArgs e)
@@ -83,7 +101,8 @@ public class ListaProduto : Form
     private void btnInserir_Click(object sender, EventArgs e)
     {
         Produto produto = new Produto();
-        produto.Show();
+        produto.ShowDialog();
+        this.LoadList();
     }
 
     private void btnAlterar_Click(object sender, EventArgs e)

@@ -43,7 +43,9 @@ public class Confirmacao : Form
         btnNao.Text = "Não";
         btnNao.Location = new Point(200, 100);
         btnNao.Size =new Size(70, 30);
-        btnNao.Click += new EventHandler(btnNao_Click);
+        btnNao.Click += (sender, e) => {
+        this.Close();
+        };
         this.Controls.Add(btnNao);
 
     }

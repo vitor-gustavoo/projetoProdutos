@@ -18,11 +18,15 @@ public class Menu : Form
   
 
     public Menu()
-    {
 
+    {
+        // Tamanho da tela
         Size = new Size(400,300);
 
+        // Define nome navbar
         this.Text = "Menu";
+
+        //Define parametros da Label Menu
 
         lblTitulo = new Label();
         lblTitulo.Text = "Menu";
@@ -32,35 +36,30 @@ public class Menu : Form
         this.StartPosition = FormStartPosition.CenterScreen;
         this.Controls.Add(lblTitulo);
 
+        // Define parametros do botão Produto
         
         btnProduto = new Button();
         btnProduto.Text = "Produto";
         btnProduto.Location = new Point(130, 80);
         btnProduto.Size = new Size(120, 30);
-        btnProduto.Click += new EventHandler(btnProduto_Click);
+        btnProduto.Click += (sender, e) => {
+         ListaProduto lista = new ListaProduto();
+        lista.ShowDialog();
+        };
+
         this.Controls.Add(btnProduto);
+
+        // Define parametros do botão Sair
 
         btnSair = new Button();
         btnSair.Text = "Sair";
         btnSair.Location = new Point(130, 120);
         btnSair.Size =new Size(120, 30);
-        btnSair.Click += new EventHandler(btnSair_Click);
+        btnSair.Click += (sender, e) => {
+        Application.Exit();
+        };
         this.Controls.Add(btnSair);
         
     }
-
-
-    private void btnSair_Click(object sender, EventArgs e)
-    {   
         
-        Application.Exit();
-        this.Close();
-    }
-
-    private void btnProduto_Click(object sender, EventArgs e)
-    {
-        ListaProduto lista = new ListaProduto();
-        lista.Show();
-        this.Close();
-    }
 }

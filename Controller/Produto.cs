@@ -7,13 +7,25 @@ namespace Controller
 
     public class Produto
     {
-       
-        public static void CadastrarProduto(int id, string nome, double preco)
+
+        public Models.Produto CadastrarProduto(string nome, string preco)
         {
-            //Models.Produto produto = new Models.Produto(id,nome, preco);
+            return new Models.Produto
+            (
+                nome,
+                Double.Parse(preco)
+            );
         }
 
 
+        // public Models.Produto EditarProduto(string nome, string preco)
+        // {
+        //     return new Models.Produto
+        //     (
+        //         nome,
+        //         Double.Parse(preco)
+        //     );
+        // }
 
 
 

@@ -17,21 +17,25 @@ public class Produto : Form
     private Label lblNome;
     private Label lblPreco;
     private Label lblCancel;
-    private Label lblConfirm;
+
 
     public TextBox txtNome;
     public TextBox txtPreco;
 
     private Button btnCancel;
-    private Button btnConfirm;
+    private Button btnSalvar;
 
     
     
     public Produto()
     {
+        // Tamanho da tela
         Size = new Size(600,500);
 
+        // Define nome navbar
         this.Text = "Produto";
+
+        //Define parametros da Label Cadastro de Produto
 
         lblTitulo = new Label();
         lblTitulo.Text = "Cadastro de Produto";
@@ -41,7 +45,7 @@ public class Produto : Form
         lblTitulo.Font = new Font("Arial", 14, FontStyle.Bold);
         this.Controls.Add(lblTitulo);
 
-        
+        //Define parametros da Label Nome
 
         lblNome = new Label();
         lblNome.Text = "Nome";
@@ -55,8 +59,6 @@ public class Produto : Form
         txtNome.Size = new Size(250,40);
         txtNome.Font = new Font("Arial", 10, FontStyle.Regular);
         this.Controls.Add(txtNome);
-
-
 
 
         lblPreco = new Label();
@@ -75,42 +77,29 @@ public class Produto : Form
         this.Controls.Add(txtPreco);
 
 
-        btnConfirm = new Button();
-        btnConfirm.Text = "Confirmar";
-        btnConfirm.Location = new Point(450, 340);
-        btnConfirm.Size = new Size(80, 30);
-        //btnConfirm.Click += new EventHandler(); falta o evento de confirmar
-        this.Controls.Add(btnConfirm);
+        btnSalvar = new Button();
+        btnSalvar.Text = "Salvar";
+        btnSalvar.Location = new Point(450, 340);
+        btnSalvar.Size = new Size(80, 30);
+        btnSalvar.Click += (sender, e) => {
+        ListaProduto lista = new ListaProduto();
+        lista.ShowDialog();
+        this.Close();
+        };
+        this.Controls.Add(btnSalvar);
+
+
+        
 
         btnCancel = new Button();
         btnCancel.Text = "Cancelar";
         btnCancel.Location = new Point(350, 340);
         btnCancel.Size =new Size(80, 30);
-        btnCancel.Click += new EventHandler(btnCancel_Click);
+        btnCancel.Click += (sender, e) => {
+        this.Close();
+        };
         this.Controls.Add(btnCancel);
-
-
-        
-
-        
     }
 
 
-    public static void CadastrarProduto()
-    {
-
-    }
-
-    private void btnConfirm_Click(object sender, EventArgs e)
-    {
-        MessageBox.Show("Produto cadastrado com sucesso");
-        ListaProduto lista = new ListaProduto();
-        lista.Show();
-        this.Close();
-    }
-
-    private void btnCancel_Click(object sender, EventArgs e)
-    {
-        this.Close();
-    }
 }
